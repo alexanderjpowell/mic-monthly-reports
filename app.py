@@ -47,15 +47,16 @@ UIDS = [('0tPGnN8kdwP8TfMPInmulOfxJnF2', -8), # progread@soboba.net
 		('1kyN8HCbC6gfZY8nNIYB1HjqRnH3', -8), # joe@capturemeters.com
 		('xgdRnVu3yrgjEhrMQgDSImBEOCc2', -5)] # lotrrox@gmail.com
 
-'''startDate = datetime.datetime(2020, 10, 30, 17, 00, tzinfo=timezone.utc)
+startDate = datetime.datetime(2020, 10, 30, 17, 00, tzinfo=timezone.utc)
 endDate = datetime.datetime(2020, 12, 1, 0, 0, tzinfo=timezone.utc)
-lastDayOfMonth = datetime.datetime(2020, 11, 30, 17, 00, tzinfo=timezone.utc)'''
+lastDayOfMonth = datetime.datetime(2020, 11, 30, 17, 00, tzinfo=timezone.utc)
 
-monthName = 'december'
+monthName = 'november'
+#monthName = 'december'
 
-startDate = datetime.datetime(2020, 11, 29, 17, 00, tzinfo=timezone.utc)
+'''startDate = datetime.datetime(2020, 11, 29, 17, 00, tzinfo=timezone.utc)
 endDate = datetime.datetime(2021, 1, 1, 0, 0, tzinfo=timezone.utc)
-lastDayOfMonth = datetime.datetime(2020, 12, 31, 17, 00, tzinfo=timezone.utc)
+lastDayOfMonth = datetime.datetime(2020, 12, 31, 17, 00, tzinfo=timezone.utc)'''
 machineIds = set()
 
 counter = 0
@@ -129,8 +130,8 @@ for item in UIDS:
 	fileName = 'generated/' + monthName + '/' + uid + '.csv'
 	with open(fileName, mode='w') as report_file:
 		writer = csv.writer(report_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-		#writer.writerow(['machine_id', 'progressive index', '10/31', '11/1', 'Change', '11/2', 'Change', '11/3', 'Change', '11/4', 'Change', '11/5', 'Change', '11/6', 'Change', '11/7', 'Change', '11/8', 'Change', '11/9', 'Change', '11/10', 'Change', '11/11', 'Change', '11/12', 'Change', '11/13', 'Change', '11/14', 'Change', '11/15', 'Change', '11/16', 'Change', '11/17', 'Change', '11/18', 'Change', '11/19', 'Change', '11/20', 'Change', '11/21', 'Change', '11/22', 'Change', '11/23', 'Change', '11/24', 'Change', '11/25', 'Change', '11/26', 'Change', '11/27', 'Change', '11/28', 'Change', '11/29', 'Change', '11/30', 'Change'])
-		writer.writerow(['machine_id', 'progressive index', '11/30', '12/1', 'Change', '12/2', 'Change', '12/3', 'Change', '12/4', 'Change', '12/5', 'Change', '12/6', 'Change', '12/7', 'Change', '12/8', 'Change', '12/9', 'Change', '12/10', 'Change', '12/11', 'Change', '12/12', 'Change', '12/13', 'Change', '12/14', 'Change', '12/15', 'Change', '12/16', 'Change', '12/17', 'Change', '12/18', 'Change', '12/19', 'Change', '12/20', 'Change', '12/21', 'Change', '12/22', 'Change', '12/23', 'Change', '12/24', 'Change', '12/25', 'Change', '12/26', 'Change', '12/27', 'Change', '12/28', 'Change', '12/29', 'Change', '12/30', 'Change', '12/31', 'Change'])
+		writer.writerow(['machine_id', 'progressive index', '10/31', '11/1', 'Change', '11/2', 'Change', '11/3', 'Change', '11/4', 'Change', '11/5', 'Change', '11/6', 'Change', '11/7', 'Change', '11/8', 'Change', '11/9', 'Change', '11/10', 'Change', '11/11', 'Change', '11/12', 'Change', '11/13', 'Change', '11/14', 'Change', '11/15', 'Change', '11/16', 'Change', '11/17', 'Change', '11/18', 'Change', '11/19', 'Change', '11/20', 'Change', '11/21', 'Change', '11/22', 'Change', '11/23', 'Change', '11/24', 'Change', '11/25', 'Change', '11/26', 'Change', '11/27', 'Change', '11/28', 'Change', '11/29', 'Change', '11/30', 'Change'])
+		#writer.writerow(['machine_id', 'progressive index', '11/30', '12/1', 'Change', '12/2', 'Change', '12/3', 'Change', '12/4', 'Change', '12/5', 'Change', '12/6', 'Change', '12/7', 'Change', '12/8', 'Change', '12/9', 'Change', '12/10', 'Change', '12/11', 'Change', '12/12', 'Change', '12/13', 'Change', '12/14', 'Change', '12/15', 'Change', '12/16', 'Change', '12/17', 'Change', '12/18', 'Change', '12/19', 'Change', '12/20', 'Change', '12/21', 'Change', '12/22', 'Change', '12/23', 'Change', '12/24', 'Change', '12/25', 'Change', '12/26', 'Change', '12/27', 'Change', '12/28', 'Change', '12/29', 'Change', '12/30', 'Change', '12/31', 'Change'])
 		for i in output:
 			for j in range(10):
 				row = []
@@ -148,7 +149,7 @@ for item in UIDS:
 				if not isAllNone(row):
 					writer.writerow(removeBlanks(row))
 
-	blob = bucket.blob(uid + '/december.csv')
+	blob = bucket.blob(uid + '/november.csv')
 	blob.upload_from_filename('/Users/alexanderpowell/Desktop/projects/mic-monthly-report-generator/' + fileName)
 	print('Report created for uid: ' + uid)
 
