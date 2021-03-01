@@ -19,7 +19,7 @@ def isAllNone(listt):
 			return False
 	return True
 
-def removeBlanks(listt):
+def formatRow(listt):
 	for i in range(len(listt)):
 		if listt[i] == None or listt[i] == "":
 			listt[i] = "-"
@@ -42,21 +42,29 @@ UIDS = [('0tPGnN8kdwP8TfMPInmulOfxJnF2', -8), # progread@soboba.net
 		('oEa70GfrUoTq6Vi3rP2AywjNWyj1', -8), # progressiveread@swinomishcasino.com
 		('yTQUJPc0uuP7foHJ2ZQ92KU3UM92', -8), # wvphoto@peppermillcas.com
 		('rB2iRF4fEWadcsXhtiOO3gWXwvw2', -6), # progread@ccrla.com
+		('6KVU4l5JA6Oqz3v78czw9cUBdwx1', -8), # casinoaccounting@cosmopolitanlasvegas.com
+		('KJ34GdRb7PPj4QLm0zDWZ6Sk9fC3', -8), # acrmmeters@accmail.net
+		('Oko1D0siR7Q7NneCOCe0tLdRw7J3', -8), # acpsmeters@srcmail.net
+		('ZXOj33tfp6SrZ7QB0txYL1toAIF3', -8), # acccmeters@accmail.net
+		('uJjfFFwtnyL8YKFMBATkJW57BNZ2', -8), # mic@gratonresortcasino.com
 
 		### For testing ###
 		('1kyN8HCbC6gfZY8nNIYB1HjqRnH3', -8), # joe@capturemeters.com
 		('xgdRnVu3yrgjEhrMQgDSImBEOCc2', -5)] # lotrrox@gmail.com
 
-startDate = datetime.datetime(2020, 10, 30, 17, 00, tzinfo=timezone.utc)
-endDate = datetime.datetime(2020, 12, 1, 0, 0, tzinfo=timezone.utc)
-lastDayOfMonth = datetime.datetime(2020, 11, 30, 17, 00, tzinfo=timezone.utc)
-
-monthName = 'november'
-#monthName = 'december'
+monthName = 'february'
 
 '''startDate = datetime.datetime(2020, 11, 29, 17, 00, tzinfo=timezone.utc)
 endDate = datetime.datetime(2021, 1, 1, 0, 0, tzinfo=timezone.utc)
 lastDayOfMonth = datetime.datetime(2020, 12, 31, 17, 00, tzinfo=timezone.utc)'''
+# startDate = datetime.datetime(2020, 12, 31, 17, 00, tzinfo=timezone.utc)
+# endDate = datetime.datetime(2021, 2, 1, 0, 0, tzinfo=timezone.utc)
+# lastDayOfMonth = datetime.datetime(2021, 1, 31, 17, 00, tzinfo=timezone.utc)
+
+# Reset time is 5pm local
+startDate = datetime.datetime(2021, 1, 30, 17, 0, tzinfo=timezone.utc)
+endDate = datetime.datetime(2021, 3, 1, 17, 0, tzinfo=timezone.utc)
+
 machineIds = set()
 
 counter = 0
@@ -81,7 +89,7 @@ for item in UIDS:
 	endRange = startRange + datetime.timedelta(days=1)
 	allDays = []
 	runningDays = []
-	while endRange <= lastDayOfMonth - datetime.timedelta(hours=offset):
+	while endRange <= endDate - datetime.timedelta(hours=offset):
 		count = 0
 		for doc in allDocs:
 			count += 1
@@ -130,14 +138,14 @@ for item in UIDS:
 	fileName = 'generated/' + monthName + '/' + uid + '.csv'
 	with open(fileName, mode='w') as report_file:
 		writer = csv.writer(report_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-		writer.writerow(['machine_id', 'progressive index', '10/31', '11/1', 'Change', '11/2', 'Change', '11/3', 'Change', '11/4', 'Change', '11/5', 'Change', '11/6', 'Change', '11/7', 'Change', '11/8', 'Change', '11/9', 'Change', '11/10', 'Change', '11/11', 'Change', '11/12', 'Change', '11/13', 'Change', '11/14', 'Change', '11/15', 'Change', '11/16', 'Change', '11/17', 'Change', '11/18', 'Change', '11/19', 'Change', '11/20', 'Change', '11/21', 'Change', '11/22', 'Change', '11/23', 'Change', '11/24', 'Change', '11/25', 'Change', '11/26', 'Change', '11/27', 'Change', '11/28', 'Change', '11/29', 'Change', '11/30', 'Change'])
-		#writer.writerow(['machine_id', 'progressive index', '11/30', '12/1', 'Change', '12/2', 'Change', '12/3', 'Change', '12/4', 'Change', '12/5', 'Change', '12/6', 'Change', '12/7', 'Change', '12/8', 'Change', '12/9', 'Change', '12/10', 'Change', '12/11', 'Change', '12/12', 'Change', '12/13', 'Change', '12/14', 'Change', '12/15', 'Change', '12/16', 'Change', '12/17', 'Change', '12/18', 'Change', '12/19', 'Change', '12/20', 'Change', '12/21', 'Change', '12/22', 'Change', '12/23', 'Change', '12/24', 'Change', '12/25', 'Change', '12/26', 'Change', '12/27', 'Change', '12/28', 'Change', '12/29', 'Change', '12/30', 'Change', '12/31', 'Change'])
+		header = ['machine_id', 'progressive index', '1/31', '2/1', 'Change', '2/2', 'Change', '2/3', 'Change', '2/4', 'Change', '2/5', 'Change', '2/6', 'Change', '2/7', 'Change', '2/8', 'Change', '2/9', 'Change', '2/10', 'Change', '2/11', 'Change', '2/12', 'Change', '2/13', 'Change', '2/14', 'Change', '2/15', 'Change', '2/16', 'Change', '2/17', 'Change', '2/18', 'Change', '2/19', 'Change', '2/20', 'Change', '2/21', 'Change', '2/22', 'Change', '2/23', 'Change', '2/24', 'Change', '2/25', 'Change', '2/26', 'Change', '2/27', 'Change', '2/28', 'Change']
+		writer.writerow(header)
+		headerLength = len(header)
 		for i in output:
 			for j in range(10):
 				row = []
 				row.append(i)
 				row.append('p' + str(j + 1))
-				#row.extend(output[i][j + 1])
 				prev = None
 				performCalculation = False
 				for k in output[i][j + 1]:
@@ -147,9 +155,9 @@ for item in UIDS:
 					prev = k
 					performCalculation = True
 				if not isAllNone(row):
-					writer.writerow(removeBlanks(row))
+					writer.writerow(formatRow(row)[:headerLength])
 
-	blob = bucket.blob(uid + '/november.csv')
+	blob = bucket.blob(uid + '/february2021.csv')
 	blob.upload_from_filename('/Users/alexanderpowell/Desktop/projects/mic-monthly-report-generator/' + fileName)
 	print('Report created for uid: ' + uid)
 
